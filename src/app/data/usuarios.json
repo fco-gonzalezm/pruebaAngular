@@ -1,0 +1,22 @@
+   
+{
+    "Usuarios":[
+        {
+            "id": 1,
+            "name": "Juan Rodriguez",
+            "email": " juan@rodriguez.org ",
+            "password": "hunter2",
+            "phone": "1234567"
+        },
+        {
+            "id": 2,
+            "name": "Francisco González",
+            "email": " fco@gonzalez.org ",
+            "password": "abcd123",
+            "phone": "987666"
+        }
+    ]
+
+}
+
+    
