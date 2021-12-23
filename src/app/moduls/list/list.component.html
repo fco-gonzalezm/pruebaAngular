@@ -1,7 +1,6 @@
 <div class="card border-primary mb-3">
     <div class="card-header">Usuarios</div>
     <div class="card-body text-primary">
-      <!-- <h5 class="card-title">Listado de usuarios</h5> -->
       <div class="my-2 text-left">
         <button class="btn btn-rounded btn-primary" (click)="createUser()" type="button">
           Agregar usaurio
@@ -25,7 +24,7 @@
             <!-- <td>{{ cliente.createAt }}</td> -->
             <td class="bnt-group d-none d-sm-block" role="group">
               <button type="submit" name="editar"  (click)='editUser(user)' class="btn btn-primary btn-sm m-1">Editar</button>         
-              <button type="button" name="eliminar" (click)='deleteUser(user)' class="btn btn-danger btn-sm m-1">Eliminar</button>
+              <button type="button" name="eliminar" (click)='deleteUser(user.name)' class="btn btn-danger btn-sm m-1">Eliminar</button>
             </td>
           </tr>
         </tbody>

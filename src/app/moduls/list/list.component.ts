@@ -20,7 +20,8 @@ export class ListComponent implements OnInit {
   constructor(private router: Router, private uservice:UsuarioService) { }
 
   ngOnInit(): void {
-    this.getUsers()
+    this.getUsers();
+    console.log(this.users);
   }
 
   getUsers() {
@@ -34,9 +35,17 @@ export class ListComponent implements OnInit {
   }
 
   deleteUser(user:any):void{
-  
-    this.users.splice(user, 1);
+    console.log(user);
+    console.log(this.users);
+    for(let i=0; i<=this.users.length; i++){
+      console.log(this.users[i].name);
+      console.log(user);
 
+      if(this.users[i].name === user){
+        console.log(i);
+        return this.users.splice(i, 1);
+      }
+    }
   }
 
   createUser(){

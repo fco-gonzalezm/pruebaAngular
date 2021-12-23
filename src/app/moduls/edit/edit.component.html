@@ -1,28 +1,26 @@
 <div class="card border-primary mb-3 ">
     <div class="card-header">Registrar usuario</div>
     <div class="card-body text-primary">
-      <!-- <h5 class="card-title">Registrar usuario</h5> -->
-     <!--  <div class="my-2 text-left">
-        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios']">
-         Cancelar
-        </button>
-      </div> -->
       <form class = "container" (ngSubmit)="saveUser()" [formGroup]="userForm">
         <div class="form-group">
           <label for="formGroupExampleInput">Nombre</label>
-          <input type="text" class="form-control"  formControlName="name" placeholder="Ingresa su nombre">
+          <input type="text" class="form-control"  formControlName="name" placeholder="Ingrese su nombre">
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput2">Email</label>
-          <input type="text"  class="form-control"  formControlName="email" placeholder="Ingresa su contraseñaIngrese su email">
+          <input type="email"  [class.is-invalid]="valEmail.invalid && valEmail.touched" class="form-control"  formControlName="email" placeholder="Ingrese su email">
+        </div>
+        <div *ngIf="(valEmail.invalid && valEmail.touched) || valEmail.dirty">
+          <small *ngIf="valEmail.errors?.required" class="text-danger">Correo requerido</small>
+          <small *ngIf="valEmail.errors?.pattern" class="text-danger">Ingrese un email valido</small>
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Contraseña</label>
-            <input type="text" class="form-control"  formControlName="password" placeholder="Ingresa su contraseña">
+            <input type="text" class="form-control"  formControlName="password" placeholder="Ingrese su contraseña">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Otros datos</label>
-            <input type="text"   class="form-control"  formControlName="phone" placeholder="Número">
+            <input type="text"   class="form-control"  formControlName="phone" placeholder="Ingrese su número">
            <!--  <hr>
             <input type="text" citycode" class="form-control" name="codigoCiudad" placeholder="Código ciudad">
             <hr>
@@ -31,9 +29,9 @@
           </div>
 
         <div style='text-align:center'>
-            <button *ngIf="!user" type="submit" class="btn btn-primary btn-sm">Crear</button>
-            <button *ngIf="user" type="submit" class="btn btn-warning btn-sm">Aceptar</button>
-            <button type="submit" (click)="backList()" class="btn btn-danger btn-sm">Cancelar</button>
+            <button *ngIf="!user" type="submit" class="btn btn-primary btn-sm m-1">Crear</button>
+            <button *ngIf="user" type="submit" class="btn btn-warning btn-sm m-1">Aceptar</button>
+            <button type="submit" (click)="backList()" class="btn btn-danger btn-sm m-1">Cancelar</button>
         </div>
       </form>
       
