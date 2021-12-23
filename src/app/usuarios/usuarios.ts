@@ -3,12 +3,12 @@ export class Usuarios {
     name: string;
     email: string;
     password: string;
-    phone: string;
+    phone: Data;
 }
 
-/* export interface Data{
+export class Data{
     number: string;
     citycode: string;
     contrycode: string;
 
-} */
+}

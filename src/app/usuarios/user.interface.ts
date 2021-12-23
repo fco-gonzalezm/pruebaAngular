@@ -3,12 +3,12 @@ export interface User{
     name: string;
     email: string;
     password: string;
-    phone: string;
+    phone: Data;
 }
 
-/* export interface Data{
+export interface Data{
     number: string;
     citycode: string;
     contrycode: string;
 
-} */
+}

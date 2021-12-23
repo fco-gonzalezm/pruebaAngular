@@ -8,11 +8,14 @@
       </div>
       <table class="table table-bordered table-striped">
         <thead>
-          <tr align=center>
+          <tr>
             <th>Nombre</th>
             <th>Email</th>
             <th>Contraseña</th>
             <th>Telefono</th>
+            <th>Código ciudad</th>
+            <th>Código pais</th>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -20,9 +23,10 @@
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.password }}</td>
-            <td>{{ user.phone }}</td>
-            <!-- <td>{{ cliente.createAt }}</td> -->
-            <td class="bnt-group d-none d-sm-block" role="group">
+            <td>{{ user.phone.number ? user.phone.number : user.phone }}</td>
+            <td>{{ user.phone.citycode ? user.phone.citycode : user.citycode}}</td>
+            <td>{{ user.phone.contrycode ? user.phone.contrycode : user.contrycode }}</td>
+            <td class="bnt-group d-none d-sm-block center-bootn " role="group">
               <button type="submit" name="editar"  (click)='editUser(user)' class="btn btn-primary btn-sm m-1">Editar</button>         
               <button type="button" name="eliminar" (click)='deleteUser(user.name)' class="btn btn-danger btn-sm m-1">Eliminar</button>
             </td>

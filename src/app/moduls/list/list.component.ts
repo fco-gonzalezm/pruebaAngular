@@ -21,7 +21,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    console.log(this.users);
   }
 
   getUsers() {
@@ -29,20 +28,13 @@ export class ListComponent implements OnInit {
   }
 
   editUser(user:any):void{
-    console.log("click");
     this.navigation.state.value = user;
     this.router.navigate(['edit'], this.navigation);
   }
 
   deleteUser(user:any):void{
-    console.log(user);
-    console.log(this.users);
     for(let i=0; i<=this.users.length; i++){
-      console.log(this.users[i].name);
-      console.log(user);
-
       if(this.users[i].name === user){
-        console.log(i);
         return this.users.splice(i, 1);
       }
     }

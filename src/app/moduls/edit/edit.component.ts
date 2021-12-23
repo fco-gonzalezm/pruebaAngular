@@ -20,15 +20,12 @@ export class EditComponent implements OnInit {
     this.user = navigation?.extras?.state?.value;
   }
 
-  ngOnInit(): void { 
-    console.log("save", this.user);
-    
+  ngOnInit(): void {
     this.userForm.patchValue(this.user)
   }
 
   saveUser(){
     this.usuario = this.uservice.getUsers();
-    console.log(this.usuario);
     if(!this.user){
       this.user = this.userForm.value;
       this.user.id = this.usuario.length + 1;
@@ -63,8 +60,9 @@ export class EditComponent implements OnInit {
       name:['', [Validators.required]],
       email:['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password:['', [Validators.required]],
-      phone:['', [Validators.required]]
-     /*  email:['', [Validators.required]], */
+      phone:['', [Validators.required]],
+      citycode:['', [Validators.required]],
+      contrycode:['', [Validators.required]]
     });
   }
 }
