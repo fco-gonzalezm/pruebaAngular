@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
   }
 
   editUser(user:any):void{
+    console.log(user);
     this.navigation.state.value = user;
     this.router.navigate(['edit'], this.navigation);
   }

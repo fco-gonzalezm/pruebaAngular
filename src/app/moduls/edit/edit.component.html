@@ -1,39 +1,55 @@
 <div class="card border-primary mb-3 ">
-    <div class="card-header">Registrar usuario</div>
-    <div class="card-body text-primary">
-      <form class = "container" (ngSubmit)="saveUser()" [formGroup]="userForm">
-        <div class="form-group">
-          <label for="formGroupExampleInput">Nombre</label>
-          <input type="text" class="form-control"  formControlName="name" placeholder="Ingrese su nombre">
-        </div>
-        <div class="form-group">
-          <label for="formGroupExampleInput2">Email</label>
-          <input type="email"  [class.is-invalid]="valEmail.invalid && valEmail.touched" class="form-control"  formControlName="email" placeholder="Ingrese su email">
-        </div>
-        <div *ngIf="(valEmail.invalid && valEmail.touched) || valEmail.dirty">
-          <small *ngIf="valEmail.errors?.required" class="text-danger">Correo requerido</small>
-          <small *ngIf="valEmail.errors?.pattern" class="text-danger">Ingrese un email valido</small>
-        </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Contraseña</label>
-            <input type="text" class="form-control"  formControlName="password" placeholder="Ingrese su contraseña">
-          </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Otros datos</label>
-            <input type="text"   class="form-control"  formControlName="phone" placeholder="Ingrese su número">
-            <hr>
-            <input type="text" class="form-control" formControlName="citycode" name="citycode" placeholder="Código ciudad">
-            <hr>
-            <input type="text" class="form-control" formControlName="contrycode" name="contrycode" placeholder="Código país">
-            <hr>
-          </div>
+  <div class="card-header">Registrar usuario</div>
+  <div class="card-body text-primary">
+    <form class="container" (ngSubmit)="saveUser()" [formGroup]="userForm">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nombre</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Ingrese su nombre">
+      </div>
+      <p class="alert alert-danger"
+        *ngIf="userForm.controls['name'].hasError('required') && userForm.controls['name'].touched">
+        Nombre requerido
+      </p>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Email</label>
+        <input type="email" [class.is-invalid]="valEmail.invalid && valEmail.touched" class="form-control"
+          formControlName="email" placeholder="Ingrese su email ej: xxx@xxx.xxx">
+      </div>
+      <div *ngIf="(valEmail.invalid && valEmail.touched) || valEmail.dirty">
+        <small *ngIf="valEmail.errors?.required" class="text-danger">Correo requerido</small>
+        <small *ngIf="valEmail.errors?.pattern" class="text-danger">Ingrese un email valido</small>
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Contraseña</label>
+        <input type="text" class="form-control" formControlName="password" placeholder="Ingrese su contraseña">
+      </div>
+      <p class="alert alert-danger" *ngIf="userForm.controls['password'].hasError('minlength')">
+        La contraseña debe tener minimo 5 caracteres.
+      </p>
+      <p class="alert alert-danger" *ngIf="userForm.controls['password'].hasError('maxlength')">
+        La contraseña debe tener máximo 15 caracteres.
+      </p>
+      <p class="alert alert-danger"
+        *ngIf="userForm.controls['password'].hasError('required') && userForm.controls['password'].touched">
+        Contraseña requerida.
+      </p>
+      <div class="form-group" formGroupName="phone">
+        <label for="formGroupExampleInput2">Otros datos</label>
+        <input type="text" class="form-control" formControlName="number" placeholder="Ingrese su número">
+        <hr>
+        <input type="text" class="form-control" formControlName="citycode" name="citycode" placeholder="Código ciudad">
+        <hr>
+        <input type="text" class="form-control" formControlName="contrycode" name="contrycode"
+          placeholder="Código país">
+        <hr>
+      </div>
 
-        <div style='text-align:center'>
-            <button *ngIf="!user" type="submit" class="btn btn-primary btn-sm m-1">Crear</button>
-            <button *ngIf="user" type="submit" class="btn btn-warning btn-sm m-1">Aceptar</button>
-            <button type="submit" (click)="backList()" class="btn btn-danger btn-sm m-1">Cancelar</button>
-        </div>
-      </form>
-      
-    </div>
+      <div style='text-align:center'>
+        <button *ngIf="!user" [disabled]="!userForm.valid" type="submit"
+          class="btn btn-primary btn-sm m-1">Crear</button>
+        <button *ngIf="user" type="submit" class="btn btn-warning btn-sm m-1">Aceptar</button>
+        <button type="submit" (click)="backList()" class="btn btn-danger btn-sm m-1">Cancelar</button>
+      </div>
+    </form>
   </div>
+</div>

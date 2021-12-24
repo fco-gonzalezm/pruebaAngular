@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as usuarios from '../data/usuarios.json';
 import { User } from '../usuarios/user.interface';
-import { Usuarios } from '../usuarios/usuarios';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { User } from 'src/app/usuarios/user.interface';
-import { Usuarios } from 'src/app/usuarios/usuarios';
 
 @Component({
   selector: 'app-edit',
@@ -15,17 +14,20 @@ export class EditComponent implements OnInit {
   user:User= null;
   userForm: FormGroup;
   constructor(private router:Router, private fb:FormBuilder, private uservice:UsuarioService) {
-    this.initForm() 
+    this.initForm(); 
     const navigation = this.router.getCurrentNavigation();
     this.user = navigation?.extras?.state?.value;
   }
 
   ngOnInit(): void {
     this.userForm.patchValue(this.user)
+    console.log(this.user)
+    
   }
 
   saveUser(){
     this.usuario = this.uservice.getUsers();
+    console.log(this.usuario);
     if(!this.user){
       this.user = this.userForm.value;
       this.user.id = this.usuario.length + 1;
@@ -35,6 +37,7 @@ export class EditComponent implements OnInit {
       this.usuario.push(obj);
       this.router.navigate(['list']);
     }else{
+      console.log(this.userForm.value);
       for(let i = 0; i<=this.usuario.length; i++){
         if(this.usuario[i].id === this.user.id){
            this.usuario[i] = this.userForm.value;
@@ -56,13 +59,16 @@ export class EditComponent implements OnInit {
     }
 
   initForm(): void{
+    console.log(this.user);
     this.userForm = this.fb.group({
       name:['', [Validators.required]],
       email:['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password:['', [Validators.required]],
-      phone:['', [Validators.required]],
-      citycode:['', [Validators.required]],
-      contrycode:['', [Validators.required]]
+      password:['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
+      phone : this.fb.group({
+        number:[''],
+        contrycode:[''],
+        citycode:['']
+      })
     });
   }
 }

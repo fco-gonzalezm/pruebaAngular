@@ -1,38 +1,40 @@
 <div class="card border-primary mb-3">
-    <div class="card-header">Usuarios</div>
-    <div class="card-body text-primary">
-      <div class="my-2 text-left">
-        <button class="btn btn-rounded btn-primary" (click)="createUser()" type="button">
-          Agregar usaurio
-        </button>
-      </div>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Contraseña</th>
-            <th>Telefono</th>
-            <th>Código ciudad</th>
-            <th>Código pais</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.password }}</td>
-            <td>{{ user.phone.number ? user.phone.number : user.phone }}</td>
-            <td>{{ user.phone.citycode ? user.phone.citycode : user.citycode}}</td>
-            <td>{{ user.phone.contrycode ? user.phone.contrycode : user.contrycode }}</td>
-            <td class="bnt-group d-none d-sm-block center-bootn " role="group">
-              <button type="submit" name="editar"  (click)='editUser(user)' class="btn btn-primary btn-sm m-1">Editar</button>         
-              <button type="button" name="eliminar" (click)='deleteUser(user.name)' class="btn btn-danger btn-sm m-1">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
+  <div class="card-header">Usuarios</div>
+  <div class="card-body text-primary">
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" (click)="createUser()" type="button">
+        Agregar usaurio
+      </button>
     </div>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Contraseña</th>
+          <th>Telefono</th>
+          <th>Código ciudad</th>
+          <th>Código pais</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.phone.number ? user.phone.number : user.phone }}</td>
+          <td>{{ user.phone.citycode ? user.phone.citycode : user.citycode}}</td>
+          <td>{{ user.phone.contrycode ? user.phone.contrycode : user.contrycode }}</td>
+          <td class="bnt-group d-none d-sm-block center-bootn " role="group">
+            <button type="submit" name="editar" (click)='editUser(user)'
+              class="btn btn-primary btn-sm m-1">Editar</button>
+            <button type="button" name="eliminar" (click)='deleteUser(user.name)'
+              class="btn btn-danger btn-sm m-1">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
+</div>
