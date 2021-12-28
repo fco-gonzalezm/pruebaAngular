@@ -21,13 +21,11 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm.patchValue(this.user)
-    console.log(this.user)
     
   }
 
   saveUser(){
     this.usuario = this.uservice.getUsers();
-    console.log(this.usuario);
     if(!this.user){
       this.user = this.userForm.value;
       this.user.id = this.usuario.length + 1;
@@ -37,7 +35,6 @@ export class EditComponent implements OnInit {
       this.usuario.push(obj);
       this.router.navigate(['list']);
     }else{
-      console.log(this.userForm.value);
       for(let i = 0; i<=this.usuario.length; i++){
         if(this.usuario[i].id === this.user.id){
            this.usuario[i] = this.userForm.value;
@@ -58,16 +55,18 @@ export class EditComponent implements OnInit {
     return this.userForm.get('email')
     }
 
-  initForm(): void{
-    console.log(this.user);
+    get dataControls() {
+      return this.userForm.controls;
+    }
+  initForm(): void {
     this.userForm = this.fb.group({
-      name:['', [Validators.required]],
-      email:['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password:['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
-      phone : this.fb.group({
-        number:[''],
-        contrycode:[''],
-        citycode:['']
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
+      phone: this.fb.group({
+        number: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(9), Validators.maxLength(9)]],
+        contrycode: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(2), Validators.maxLength(3)]],
+        citycode: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(1), Validators.maxLength(2)]],
       })
     });
   }

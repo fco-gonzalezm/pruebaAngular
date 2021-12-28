@@ -8,13 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './moduls/list/list.component';
 import { EditComponent } from './moduls/edit/edit.component';
+import { FormantLinePipe } from './pipe/formatLine.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
+    FormantLinePipe
   ],
   imports: [
     BrowserModule,

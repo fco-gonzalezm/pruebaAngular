@@ -36,11 +36,41 @@
       <div class="form-group" formGroupName="phone">
         <label for="formGroupExampleInput2">Otros datos</label>
         <input type="text" class="form-control" formControlName="number" placeholder="Ingrese su número">
+        <p class="alert alert-danger"
+          *ngIf="this.dataControls.phone.get('number').hasError('required') && this.dataControls.phone.get('number').touched">
+          Numero requerido
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('number').hasError('minlength')">
+          El numero debe tener minimo 9 y solo caracteres numéricos
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('number').hasError('maxlength')">
+          El numero debe tener máximo 9 y solo caracteres numéricos
+        </p>
         <hr>
         <input type="text" class="form-control" formControlName="citycode" name="citycode" placeholder="Código ciudad">
+        <p class="alert alert-danger"
+          *ngIf="this.dataControls.phone.get('citycode').hasError('required') && this.dataControls.phone.get('citycode').touched">
+          Código ciudad requerido
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('citycode').hasError('minlength')">
+          El código debe tener solo valores numéricos y minimo 1 digito.
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('citycode').hasError('maxlength')">
+          El código debe tener solo valores numéricos y máximo 2 digito.
+        </p>
         <hr>
         <input type="text" class="form-control" formControlName="contrycode" name="contrycode"
           placeholder="Código país">
+        <p class="alert alert-danger"
+          *ngIf="this.dataControls.phone.get('contrycode').hasError('required') && this.dataControls.phone.get('contrycode').touched">
+          Código país requerido
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('contrycode').hasError('minlength')">
+          El código debe tener minimo 2 caracteres solamente numéricos.
+        </p>
+        <p class="alert alert-danger" *ngIf="this.dataControls.phone.get('contrycode').hasError('maxlength')">
+          El código debe tener máximo 3 caracteres solamente numéricos.
+        </p>
         <hr>
       </div>
 

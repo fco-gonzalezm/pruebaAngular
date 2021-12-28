@@ -23,9 +23,9 @@
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.password }}</td>
-          <td>{{ user.phone.number ? user.phone.number : user.phone }}</td>
-          <td>{{ user.phone.citycode ? user.phone.citycode : user.citycode}}</td>
-          <td>{{ user.phone.contrycode ? user.phone.contrycode : user.contrycode }}</td>
+          <td>{{ user.phone.number | formantLine}}</td>
+          <td>{{ user.phone.citycode}}</td>
+          <td>{{ user.phone.contrycode}}</td>
           <td class="bnt-group d-none d-sm-block center-bootn " role="group">
             <button type="submit" name="editar" (click)='editUser(user)'
               class="btn btn-primary btn-sm m-1">Editar</button>
